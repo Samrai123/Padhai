@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 // Colors
-const kBackgroundColor = Color.fromARGB(255, 242, 242, 243);
+const kBackgroundColor = Color.fromARGB(255, 174, 174, 174);
 const kTextFieldFill = Color(0xff1E1C24);
 // TextStyles
 const kHeadline = TextStyle(
