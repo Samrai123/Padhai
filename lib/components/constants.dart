@@ -14,6 +14,10 @@ const kBodyText = TextStyle(
     color: Color.fromARGB(255, 13, 11, 11),
     fontSize: 15,
     fontFamily: 'CourierPrime');
+const kBodyTextB = TextStyle(
+    color: Color.fromARGB(255, 13, 11, 11),
+    fontSize: 20,
+    fontFamily: 'CourierPrime');
 
 const kButtonText = TextStyle(
     color: Colors.black87,

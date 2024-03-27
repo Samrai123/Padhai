@@ -1,5 +1,6 @@
 import 'package:eduhub/auth/welcome_page.dart';
 import 'package:eduhub/auth/login_main.dart';
+import 'package:eduhub/home/navigationbar.dart/customtabbar.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -15,13 +16,14 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Padhai',
+      title: 'Unbound',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(
             seedColor: const Color.fromARGB(255, 153, 153, 155)),
         useMaterial3: true,
       ),
-      home: Welcome(),
+      // home: Welcome(),
+      home: CustomTabBar(),
     );
   }
 }

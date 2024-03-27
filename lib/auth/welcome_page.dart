@@ -44,7 +44,7 @@ class _WelcomeState extends State<Welcome> {
                       height: 40,
                     ),
                     const Text(
-                      "Welcome to Padhai",
+                      "Welcome to Unbound ",
                       style: kHeadline,
                       textAlign: TextAlign.center,
                     ),
@@ -54,7 +54,7 @@ class _WelcomeState extends State<Welcome> {
                     Container(
                       width: MediaQuery.of(context).size.width * 0.8,
                       child: const Text(
-                        "An app where you can find and become professional with your passion!",
+                        "An app where you can find copyright free audio!",
                         style: kBodyText,
                         textAlign: TextAlign.center,
                       ),

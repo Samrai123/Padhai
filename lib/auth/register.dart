@@ -1,18 +1,16 @@
-import 'package:eduhub/auth/register.dart';
+import 'package:eduhub/auth/login_main.dart';
 import 'package:eduhub/components/constants.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:page_transition/page_transition.dart';
 
-class Login extends StatefulWidget {
-  const Login({super.key});
+class Register extends StatefulWidget {
+  const Register({super.key});
 
   @override
-  State<Login> createState() => _LoginState();
+  State<Register> createState() => _RegisterState();
 }
 
-class _LoginState extends State<Login> {
+class _RegisterState extends State<Register> {
   bool _passwordVisible = true;
 
   void initState() {
@@ -26,7 +24,8 @@ class _LoginState extends State<Login> {
       body: SafeArea(
           child: Padding(
         padding: EdgeInsets.all(20),
-        child: Column(
+        child: Flexible(
+            child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -44,7 +43,7 @@ class _LoginState extends State<Login> {
               height: 50,
             ),
             const Text(
-              "Login Your Account",
+              "Register Your Account",
               style: kBodyTextB,
             ),
             const SizedBox(
@@ -62,6 +61,27 @@ class _LoginState extends State<Login> {
                       hintText: "Enter Email",
                       hintStyle: kBodyText,
                       labelText: "Email",
+                      labelStyle: kBodyText,
+                      enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.black, width: 1),
+                          borderRadius: BorderRadius.circular(15)),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(15),
+                        borderSide: BorderSide(color: Colors.black87, width: 1),
+                      )),
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                TextFormField(
+                  style: kBodyText,
+                  keyboardType: TextInputType.phone,
+                  textInputAction: TextInputAction.next,
+                  decoration: InputDecoration(
+                      contentPadding: EdgeInsets.all(18),
+                      hintText: "Enter Phone Number",
+                      hintStyle: kBodyText,
+                      labelText: "Phone Number",
                       labelStyle: kBodyText,
                       enabledBorder: OutlineInputBorder(
                           borderSide: BorderSide(color: Colors.black, width: 1),
@@ -110,31 +130,46 @@ class _LoginState extends State<Login> {
                       val!.length < 8 ? 'Password too short.' : null,
                 ),
                 const SizedBox(
+                  height: 20,
+                ),
+                TextFormField(
+                  style: kBodyText,
+                  keyboardType: TextInputType.emailAddress,
+                  textInputAction: TextInputAction.next,
+                  decoration: InputDecoration(
+                      contentPadding: EdgeInsets.all(18),
+                      hintText: "Enter Confirm Password",
+                      hintStyle: kBodyText,
+                      labelText: "Confirm Password",
+                      labelStyle: kBodyText,
+                      enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.black, width: 1),
+                          borderRadius: BorderRadius.circular(15)),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(15),
+                        borderSide: BorderSide(color: Colors.black87, width: 1),
+                      ),
+                      suffixIcon: IconButton(
+                          icon: Icon(
+                            _passwordVisible
+                                ? Icons.visibility
+                                : Icons.visibility_off,
+                            color: Colors.black,
+                          ),
+                          onPressed: () {
+                            // Update the state i.e. toogle the state of passwordVisible variable
+                            setState(() {
+                              _passwordVisible = !_passwordVisible;
+                            });
+                          })),
+                  obscureText: !_passwordVisible,
+                  onChanged: (value) {},
+                  validator: (val) =>
+                      val!.length < 8 ? 'Password too short.' : null,
+                ),
+                const SizedBox(
                   height: 25,
                 ),
-                Container(
-                    child: Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    const SizedBox(
-                      width: 2,
-                    ),
-                    InkWell(
-                      onTap: () {
-                        // Navigator.push(
-                        //     context,
-                        //     PageTransition(
-                        //         type: PageTransitionType.rightToLeft,
-                        //         child: Register()));
-                      },
-                      child: const Text("Forget your password?",
-                          style: TextStyle(
-                              color: Color.fromARGB(255, 61, 114, 158),
-                              fontSize: 15,
-                              fontFamily: 'CourierPrime')),
-                    )
-                  ],
-                )),
                 const SizedBox(
                   height: 25,
                 ),
@@ -148,8 +183,8 @@ class _LoginState extends State<Login> {
                       border: Border.all(width: 1, color: Colors.black),
                       borderRadius: BorderRadius.circular(15),
                     ),
-                    child: const Text(
-                      "Login",
+                    child: Text(
+                      "Register",
                       style: kBodyText,
                     ),
                   ),
@@ -161,7 +196,7 @@ class _LoginState extends State<Login> {
                     child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const Text("Doesnt have a account?", style: kBodyText),
+                    const Text("Already have a account?", style: kBodyText),
                     const SizedBox(
                       width: 2,
                     ),
@@ -171,9 +206,9 @@ class _LoginState extends State<Login> {
                             context,
                             PageTransition(
                                 type: PageTransitionType.rightToLeft,
-                                child: Register()));
+                                child: Login()));
                       },
-                      child: const Text("Register Now",
+                      child: const Text("Sign In",
                           style: TextStyle(
                               color: Color.fromARGB(255, 61, 114, 158),
                               fontSize: 15,
@@ -184,7 +219,7 @@ class _LoginState extends State<Login> {
               ],
             ))
           ],
-        ),
+        )),
       )),
     );
   }
